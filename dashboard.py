@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import zipfile
+import seaborn as sns
+sns.set_theme(style='dark')
 
 st.set_page_config(
     page_title="Bike Sharing Data Analysis Dashboard",
