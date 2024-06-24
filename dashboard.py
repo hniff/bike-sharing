@@ -153,7 +153,7 @@ if uploaded_file is not None:
     else:
         st.error('File type is not ZIP')
 else:
-    if os.path.exists("day.csv"):
+    if os.path.exists("days.csv"):
         os.remove("day.csv")
         os.remove("hour.csv")
     else:
