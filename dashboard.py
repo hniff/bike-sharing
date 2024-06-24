@@ -152,5 +152,11 @@ if uploaded_file is not None:
             show_all()
     else:
         st.error('File type is not ZIP')
+else:
+    if os.path.exists("day.csv"):
+        os.remove("day.csv")
+        os.remove("hour.csv")
+    else:
+        print("The file does not exist")
 
     
