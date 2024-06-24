@@ -136,12 +136,10 @@ if uploaded_file is not None:
         st.success("File type is ZIP")
         with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
             zip_ref.extractall()
+        day_data = pd.read_csv("day.csv")
+        hour_data = pd.read_csv("hour.csv")
     else:
         st.error('File type is not ZIP')
-    
-
-    day_data = pd.read_csv("day.csv")
-    hour_data = pd.read_csv("hour.csv")
 
     day_data = day_data.rename(columns={'cnt':'Rental Count'})
     hour_data = hour_data.rename(columns={'cnt':'Rental Count'})
