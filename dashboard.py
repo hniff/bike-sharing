@@ -136,23 +136,27 @@ if uploaded_file is not None:
         st.success("File type is ZIP")
         with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
             zip_ref.extractall()
-        day_data = pd.read_csv("day.csv")
-        hour_data = pd.read_csv("hour.csv")
-        day_data = day_data.rename(columns={'cnt':'Rental Count'})
-        hour_data = hour_data.rename(columns={'cnt':'Rental Count'})
+        if os.path.exists("day.csv") && os.path.exists("hour.csv"):
+            st.success("hour.csv and day.csv dataset exist")
+            day_data = pd.read_csv("day.csv")
+            hour_data = pd.read_csv("hour.csv")
+            day_data = day_data.rename(columns={'cnt':'Rental Count'})
+            hour_data = hour_data.rename(columns={'cnt':'Rental Count'})
 
-        vis_list = ["Time Series Analysis", "Weather Impact Analysis", "Show All Visualization"]
-        selected_vis = st.selectbox('Select a Type of Visualization', vis_list)
+            vis_list = ["Time Series Analysis", "Weather Impact Analysis", "Show All Visualization"]
+            selected_vis = st.selectbox('Select a Type of Visualization', vis_list)
 
-        if selected_vis == "Time Series Analysis":
-            time_series_analysis()
-        elif selected_vis == "Weather Impact Analysis":
-            weather_impact_analysis()
-        elif selected_vis == "Show All Visualization":
-            show_all()
+            if selected_vis == "Time Series Analysis":
+                time_series_analysis()
+            elif selected_vis == "Weather Impact Analysis":
+                weather_impact_analysis()
+            elif selected_vis == "Show All Visualization":
+                show_all()
+        else:
+            st.error('There are no hour.csv and day.csv dataset')
     else:
         st.error('File type is not ZIP')
 else:
-    if os.path.exists("day.csv"):
+    if os.path.exists("day.csv") && os.path.exists("hour.csv"):
         os.remove("day.csv")
         os.remove("hour.csv")
