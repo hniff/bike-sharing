@@ -130,8 +130,13 @@ def show_all():
 uploaded_file = st.file_uploader("Choose Bike Sharing Dataset")
 
 if uploaded_file is not None:
-    with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
-        zip_ref.extractall()
+    if (file_extension == ".zip") is True:
+        st.success("File type is ZIP")
+        with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
+            zip_ref.extractall()
+    else:
+        st.error('File type is not ZIP')
+    
 
     day_data = pd.read_csv("day.csv")
     hour_data = pd.read_csv("hour.csv")
