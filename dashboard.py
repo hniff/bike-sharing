@@ -138,18 +138,19 @@ if uploaded_file is not None:
             zip_ref.extractall()
         day_data = pd.read_csv("day.csv")
         hour_data = pd.read_csv("hour.csv")
+        day_data = day_data.rename(columns={'cnt':'Rental Count'})
+        hour_data = hour_data.rename(columns={'cnt':'Rental Count'})
+
+        vis_list = ["Time Series Analysis", "Weather Impact Analysis", "Show All Visualization"]
+        selected_vis = st.selectbox('Select a Type of Visualization', vis_list)
+
+        if selected_vis == "Time Series Analysis":
+            time_series_analysis()
+        elif selected_vis == "Weather Impact Analysis":
+            weather_impact_analysis()
+        elif selected_vis == "Show All Visualization":
+            show_all()
     else:
         st.error('File type is not ZIP')
 
-    day_data = day_data.rename(columns={'cnt':'Rental Count'})
-    hour_data = hour_data.rename(columns={'cnt':'Rental Count'})
-
-    vis_list = ["Time Series Analysis", "Weather Impact Analysis", "Show All Visualization"]
-    selected_vis = st.selectbox('Select a Type of Visualization', vis_list)
-
-    if selected_vis == "Time Series Analysis":
-        time_series_analysis()
-    elif selected_vis == "Weather Impact Analysis":
-        weather_impact_analysis()
-    elif selected_vis == "Show All Visualization":
-        show_all()
+    
