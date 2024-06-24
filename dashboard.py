@@ -157,6 +157,6 @@ else:
         os.remove("day.csv")
         os.remove("hour.csv")
     else:
-        print("The file does not exist")
+        st.write("The file does not exist")
 
     
