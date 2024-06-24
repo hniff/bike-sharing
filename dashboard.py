@@ -156,7 +156,3 @@ else:
     if os.path.exists("day.csv"):
         os.remove("day.csv")
         os.remove("hour.csv")
-    else:
-        st.write("The file does not exist")
-
-    
