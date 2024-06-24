@@ -129,9 +129,9 @@ def show_all():
         weather_impact_analysis()
 
 uploaded_file = st.file_uploader("Choose Bike Sharing Dataset")
-filename, file_extension = os.path.splitext(uploaded_file.name)
 
 if uploaded_file is not None:
+    filename, file_extension = os.path.splitext(uploaded_file.name)
     if (file_extension == ".zip") is True:
         st.success("File type is ZIP")
         with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
