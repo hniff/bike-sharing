@@ -136,7 +136,7 @@ if uploaded_file is not None:
         st.success("File type is ZIP")
         with zipfile.ZipFile(uploaded_file, 'r') as zip_ref:
             zip_ref.extractall()
-        if os.path.exists("day.csv") && os.path.exists("hour.csv"):
+        if os.path.exists("day.csv") and os.path.exists("hour.csv"):
             st.success("hour.csv and day.csv dataset exist")
             day_data = pd.read_csv("day.csv")
             hour_data = pd.read_csv("hour.csv")
@@ -157,6 +157,6 @@ if uploaded_file is not None:
     else:
         st.error('File type is not ZIP')
 else:
-    if os.path.exists("day.csv") && os.path.exists("hour.csv"):
+    if os.path.exists("day.csv") and os.path.exists("hour.csv"):
         os.remove("day.csv")
         os.remove("hour.csv")
